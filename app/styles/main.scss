@@ -10,14 +10,23 @@
 
 #dropzone h1 {
     color      : #333;
-    line-height: 290px;
-    margin-top : 0;
+    /*line-height: 290px;*/
+    /*margin-top : 0;*/
     text-align : center;
     text-shadow: 0 1px 0 #fff;
 }
 
+#dropzone li {
+    margin: 0;
+    width : auto;
+}
+
 .over {
     border-style: dashed;
+}
+
+.moving {
+    opacity: .4;
 }
 
 .hero-unit {
@@ -30,10 +39,10 @@ ul {
 }
 
 li {
-    border         : 1px solid #999;
-    border-radius  : 2px;
+    /*border-radius  : 2px;*/
     list-style-type: none;
     margin         : 20px 0 0 0;
+    opacity        : 1;
     width          : 400px;
 }
 
@@ -41,13 +50,21 @@ li:first-child {
     margin-top: 0;
 }
 
-li > a {
-    background-color: #bbb;
-    color           : #fefefe;
-    height          : 42px;
-    display         : block;
-    line-height     : 42px;
-    padding-left    : 10px;
+.items {
+    background-color: #ddd;
+    min-height      : 44px;
+    width           : 400px;
+
+    a {
+        background-color: #bbb;
+        border          : 1px solid #999;
+        color           : #fefefe;
+        cursor          : move;
+        display         : block;
+        height          : 42px;
+        line-height     : 42px;
+        padding-left    : 10px;
+    }
 }
 
 [draggable] {
