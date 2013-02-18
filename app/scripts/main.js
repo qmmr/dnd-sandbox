@@ -9,7 +9,7 @@
         // sets dataObject as this el's innerHTML
         dragSrcEl = this.parentNode;
         e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.innerHTML);
+        e.dataTransfer.setData('text/html', this.parentNode.innerHTML);
     }
 
     function handleDragEnter(e) {
@@ -34,28 +34,41 @@
         this.classList.remove('over');  // this / e.target is previous target element.
     }
 
+    function handleCancel(e) {
+        var li = this.parentNode;
+        var clone = li.cloneNode(true);
+
+        // console.log(clone, items);
+        items.appendChild(clone);
+        li.parentNode.removeChild(li);
+    }
+
     function handleDrop(e) {
         // this / e.target is current target element.
         if (e.stopPropagation) {
             e.stopPropagation(); // stops the browser from redirecting.
         }
 
-        [].forEach.call(items, function (el) {
-            el.classList.remove('moving');
-        });
+        // [].forEach.call(items, function (el) {
+        //     el.classList.remove('moving');
+        // });
 
         // Don't do anything if dropping the same column we're dragging.
         if (dragSrcEl != this) {
             // Set the source column's HTML to the HTML of the column we dropped on.
             // dragSrcEl.innerHTML = this.innerHTML;
             // this.innerHTML = e.dataTransfer.getData('text/html');
-            var ul = this.getElementsByTagName('ul')[0];
+
             var li = document.createElement('li');
-            li.textContent = e.dataTransfer.getData('text/html');
-            ul.appendChild(li);
-            dragSrcEl.parentNode.removeChild(dragSrcEl);
-            // console.log(ul);
+            var span = document.createElement('span');
             // console.log(e.dataTransfer.getData('text/html'));
+            li.innerHTML = e.dataTransfer.getData('text/html');
+            span.textContent = 'x';
+            span.addEventListener('click', handleCancel, false);
+
+            li.appendChild(span);
+            cart.appendChild(li);
+            dragSrcEl.parentNode.removeChild(dragSrcEl);
         }
 
         this.classList.remove('over');
@@ -79,8 +92,11 @@
     dropzone.addEventListener('dragenter', handleDragEnter, false);
     dropzone.addEventListener('dragover', handleDragOver, false);
 
-    var items = document.querySelectorAll('.items > li > a');
-    [].forEach.call(items, function(el) {
+    var cart = document.getElementById('cart');
+    var items = document.getElementById('items');
+
+    var links = document.querySelectorAll('#items > li > a');
+    [].forEach.call(links, function(el) {
         el.addEventListener('dragstart', handleDragStart, false);
         el.addEventListener('dragenter', handleDragEnter, false);
         el.addEventListener('dragover', handleDragOver, false);

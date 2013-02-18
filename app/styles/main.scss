@@ -4,21 +4,30 @@
     border          : 1px solid #aaa;
     border-radius   : 5px;
     float           : left;
-    height          : 300px;
+    /*min-height      : 300px;*/
     width           : 300px;
-}
 
-#dropzone h1 {
-    color      : #333;
-    /*line-height: 290px;*/
-    /*margin-top : 0;*/
-    text-align : center;
-    text-shadow: 0 1px 0 #fff;
-}
+    h1 {
+        color      : #333;
+        /*line-height: 290px;*/
+        /*margin-top : 0;*/
+        text-align : center;
+        text-shadow: 0 1px 0 #fff;
+    }
 
-#dropzone li {
-    margin: 0;
-    width : auto;
+    ul {
+        margin: 20px 0 20px 20px;
+        width : 262px;
+    }
+
+    li {
+        background-color: #BBB;
+        border          : 1px solid #999;
+        border-radius   : 2px;
+        margin          : 5px 0 0;
+        padding         : 10px;
+        width           : 240px;
+    }
 }
 
 .over {
@@ -43,7 +52,27 @@ li {
     list-style-type: none;
     margin         : 20px 0 0 0;
     opacity        : 1;
+    position       : relative;
     width          : 400px;
+}
+
+li > span {
+    background-color: #444;
+    border-radius   : 50%;
+    color           : white;
+    cursor          : pointer;
+    font-weight     : bold;
+    height          : 20px;
+    line-height     : 18px;
+    position        : absolute;
+    right           : 10px;
+    text-align      : center;
+    top             : 10px;
+    width           : 20px;
+
+    &:hover {
+        background-color: #777;
+    }
 }
 
 li:first-child {
