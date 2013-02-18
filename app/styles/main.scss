@@ -16,6 +16,10 @@
     text-shadow: 0 1px 0 #fff;
 }
 
+.over {
+    border-style: dashed;
+}
+
 .hero-unit {
     overflow: hidden;
 }
@@ -26,6 +30,8 @@ ul {
 }
 
 li {
+    border         : 1px solid #999;
+    border-radius  : 2px;
     list-style-type: none;
     margin         : 20px 0 0 0;
     width          : 400px;
@@ -38,9 +44,9 @@ li:first-child {
 li > a {
     background-color: #bbb;
     color           : #fefefe;
-    height          : 44px;
+    height          : 42px;
     display         : block;
-    line-height     : 44px;
+    line-height     : 42px;
     padding-left    : 10px;
 }
 
