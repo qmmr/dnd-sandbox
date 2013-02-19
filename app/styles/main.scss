@@ -18,6 +18,10 @@
     width: 280px;
     margin: 0 auto 10px;
 
+    & .item {
+        width: 270px;
+    }
+
     p {
         span {display: none;}
     }
@@ -59,20 +63,24 @@
 }
 
 .item {
-    margin-top: 15px;
-    position: relative;
+    background-color : #bbb;
+    border           : 1px solid #999;
+    border-radius    : 4px;
+    cursor           : move;
+    margin           : 10px auto;
+    margin-top       : 15px;
+    position         : relative;
+    width            : 380px;
 
-    &:first-child {margin-top: 0;}
+    // &:first-child {margin-top: 0;}
 
     p {
-        background-color: #bbb;
-        border          : 1px solid #999;
-        color           : #fefefe;
-        cursor          : move;
-        display         : block;
-        height          : 42px;
-        line-height     : 42px;
-        padding-left    : 10px;
+        display      : block;
+        height       : 42px;
+        line-height  : 42px;
+        margin       : 0;
+        padding-left : 10px;
+        text-shadow: 0 1px 0 rgba(255,255,255,.6);
     }
 
     span {

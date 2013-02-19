@@ -51,24 +51,28 @@
         // [].forEach.call(items, function (el) {
         //     el.classList.remove('moving');
         // });
+        console.log(this, dragSrcEl);
 
-        // Don't do anything if dropping the same column we're dragging.
-        if (dragSrcEl != this) {
-            // Set the source column's HTML to the HTML of the column we dropped on.
-            // dragSrcEl.innerHTML = this.innerHTML;
-            // this.innerHTML = e.dataTransfer.getData('text/html');
-
-            // var li = document.createElement('li');
-            // li.innerHTML = e.dataTransfer.getData('text/html');
-
-            // var span = document.createElement('span');
-            // span.textContent = 'x';
-            // span.addEventListener('click', handleCancel, false);
-            // li.appendChild(span);
-
-            cart.appendChild(dragSrcEl);
-            // dragSrcEl.parentNode.removeChild(dragSrcEl);
+        if (this == items) {
+            items.appendChild(dragSrcEl);
         }
+
+        if (this == dropzone) {
+            cart.appendChild(dragSrcEl);
+        }
+        // Set the source column's HTML to the HTML of the column we dropped on.
+        // dragSrcEl.innerHTML = this.innerHTML;
+        // this.innerHTML = e.dataTransfer.getData('text/html');
+
+        // var li = document.createElement('li');
+        // li.innerHTML = e.dataTransfer.getData('text/html');
+
+        // var span = document.createElement('span');
+        // span.textContent = 'x';
+        // span.addEventListener('click', handleCancel, false);
+        // li.appendChild(span);
+
+        // dragSrcEl.parentNode.removeChild(dragSrcEl);
 
         this.classList.remove('over');
         console.log('handleDrop');
@@ -85,23 +89,25 @@
     }
 
     var dragSrcEl = null; // placeholder for html of dragged element
+    var cart = document.getElementById('cart');
 
     var dropzone = document.querySelector('#dropzone');
     dropzone.addEventListener('drop', handleDrop, false);
     dropzone.addEventListener('dragenter', handleDragEnter, false);
     dropzone.addEventListener('dragover', handleDragOver, false);
 
-    var cart = document.getElementById('cart');
     var items = document.getElementById('items');
+    items.addEventListener('drop', handleDrop, false);
+    items.addEventListener('dragenter', handleDragEnter, false);
+    items.addEventListener('dragover', handleDragOver, false);
 
     var links = document.querySelectorAll('.item');
     [].forEach.call(links, function(el) {
-        console.log(el);
         el.addEventListener('dragstart', handleDragStart, false);
         el.addEventListener('dragenter', handleDragEnter, false);
         el.addEventListener('dragover', handleDragOver, false);
         el.addEventListener('dragleave', handleDragLeave, false);
-        el.addEventListener('drop', handleDrop, false);
+        // el.addEventListener('drop', handleDrop, false);
         el.addEventListener('dragend', handleDragEnd, false);
     });
 })();
