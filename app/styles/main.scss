@@ -9,24 +9,17 @@
 
     h1 {
         color      : #333;
-        /*line-height: 290px;*/
-        /*margin-top : 0;*/
         text-align : center;
         text-shadow: 0 1px 0 #fff;
     }
+}
 
-    ul {
-        margin: 20px 0 20px 20px;
-        width : 262px;
-    }
+.cart {
+    width: 280px;
+    margin: 0 auto 10px;
 
-    li {
-        background-color: #BBB;
-        border          : 1px solid #999;
-        border-radius   : 2px;
-        margin          : 5px 0 0;
-        padding         : 10px;
-        width           : 240px;
+    p {
+        span {display: none;}
     }
 }
 
@@ -38,31 +31,24 @@
     opacity: .4;
 }
 
-li {
-    list-style-type: none;
-    opacity        : 1;
-    position       : relative;
-    width          : 400px;
-}
+// span {
+//     background-color: #444;
+//     border-radius   : 50%;
+//     color           : white;
+//     cursor          : pointer;
+//     font-weight     : bold;
+//     height          : 20px;
+//     line-height     : 18px;
+//     position        : absolute;
+//     right           : 10px;
+//     text-align      : center;
+//     top             : 10px;
+//     width           : 20px;
 
-li > span {
-    background-color: #444;
-    border-radius   : 50%;
-    color           : white;
-    cursor          : pointer;
-    font-weight     : bold;
-    height          : 20px;
-    line-height     : 18px;
-    position        : absolute;
-    right           : 10px;
-    text-align      : center;
-    top             : 10px;
-    width           : 20px;
-
-    &:hover {
-        background-color: #777;
-    }
-}
+//     &:hover {
+//         background-color: #777;
+//     }
+// }
 
 .items {
     background-color: #ddd;
@@ -70,8 +56,15 @@ li > span {
     margin          : 0 0 0 20px;
     min-height      : 44px;
     width           : 400px;
+}
 
-    a {
+.item {
+    margin-top: 15px;
+    position: relative;
+
+    &:first-child {margin-top: 0;}
+
+    p {
         background-color: #bbb;
         border          : 1px solid #999;
         color           : #fefefe;
@@ -81,12 +74,11 @@ li > span {
         line-height     : 42px;
         padding-left    : 10px;
     }
-}
 
-.item {
-    margin-top: 15px;
-
-    &:first-child {margin-top: 0;}
+    span {
+        position: absolute;
+        right: 10px;
+    }
 }
 
 [draggable] {

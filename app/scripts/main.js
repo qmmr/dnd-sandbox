@@ -2,14 +2,13 @@
    'use strict';
 
     function handleDragStart (e) {
-        // this.style.opacity = '.4';
         this.classList.add('moving');
-        // console.log(e);
 
         // sets dataObject as this el's innerHTML
-        dragSrcEl = this.parentNode;
+        dragSrcEl = this;
+
         e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.parentNode.innerHTML);
+        e.dataTransfer.setData('text/html', this.innerHTML);
     }
 
     function handleDragEnter(e) {
@@ -34,14 +33,14 @@
         this.classList.remove('over');  // this / e.target is previous target element.
     }
 
-    function handleCancel(e) {
-        var li = this.parentNode;
-        var clone = li.cloneNode(true);
+    // function handleCancel(e) {
+    //     var li = this.parentNode;
+    //     var clone = li.cloneNode(true);
 
-        // console.log(clone, items);
-        items.appendChild(clone);
-        li.parentNode.removeChild(li);
-    }
+    //     // console.log(clone, items);
+    //     items.appendChild(clone);
+    //     li.parentNode.removeChild(li);
+    // }
 
     function handleDrop(e) {
         // this / e.target is current target element.
@@ -59,16 +58,16 @@
             // dragSrcEl.innerHTML = this.innerHTML;
             // this.innerHTML = e.dataTransfer.getData('text/html');
 
-            var li = document.createElement('li');
-            var span = document.createElement('span');
-            // console.log(e.dataTransfer.getData('text/html'));
-            li.innerHTML = e.dataTransfer.getData('text/html');
-            span.textContent = 'x';
-            span.addEventListener('click', handleCancel, false);
+            // var li = document.createElement('li');
+            // li.innerHTML = e.dataTransfer.getData('text/html');
 
-            li.appendChild(span);
-            cart.appendChild(li);
-            dragSrcEl.parentNode.removeChild(dragSrcEl);
+            // var span = document.createElement('span');
+            // span.textContent = 'x';
+            // span.addEventListener('click', handleCancel, false);
+            // li.appendChild(span);
+
+            cart.appendChild(dragSrcEl);
+            // dragSrcEl.parentNode.removeChild(dragSrcEl);
         }
 
         this.classList.remove('over');
@@ -79,10 +78,10 @@
 
     function handleDragEnd(e) {
         // this/e.target is the source node.
-        [].forEach.call(items, function (el) {
-            el.classList.remove('over');
+        [].forEach.call(links, function (el) {
+            el.classList.remove('moving');
         });
-        // console.log('handleDragEnd');
+        console.log('handleDragEnd');
     }
 
     var dragSrcEl = null; // placeholder for html of dragged element
@@ -95,8 +94,9 @@
     var cart = document.getElementById('cart');
     var items = document.getElementById('items');
 
-    var links = document.querySelectorAll('#items > li > a');
+    var links = document.querySelectorAll('.item');
     [].forEach.call(links, function(el) {
+        console.log(el);
         el.addEventListener('dragstart', handleDragStart, false);
         el.addEventListener('dragenter', handleDragEnter, false);
         el.addEventListener('dragover', handleDragOver, false);
