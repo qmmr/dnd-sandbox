@@ -1,30 +1,21 @@
 @import "compass_twitter_bootstrap";
-#dropzone {
+h2 {
+    color      : #333;
+    text-align : center;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.shoppingContainer {
     background-color: #ccc;
     border          : 1px solid #aaa;
     border-radius   : 5px;
     float           : left;
     /*min-height      : 300px;*/
-    width           : 300px;
-
-    h1 {
-        color      : #333;
-        text-align : center;
-        text-shadow: 0 1px 0 #fff;
-    }
+    width           : 390px;
 }
 
-.cart {
-    width: 280px;
+#cart {
     margin: 0 auto 10px;
-
-    & .item {
-        width: 270px;
-    }
-
-    p {
-        span {display: none;}
-    }
 }
 
 .over {
@@ -32,7 +23,8 @@
 }
 
 .moving {
-    opacity: .4;
+    // opacity: .4;
+    z-index: 1000;
 }
 
 // span {
@@ -55,11 +47,7 @@
 // }
 
 .items {
-    background-color: #ddd;
-    float           : left;
-    margin          : 0 0 0 20px;
-    min-height      : 44px;
-    width           : 400px;
+    margin-left: 20px;
 }
 
 .item {
@@ -70,9 +58,10 @@
     margin           : 10px auto;
     margin-top       : 15px;
     position         : relative;
-    width            : 380px;
+    width            : 360px;
 
     // &:first-child {margin-top: 0;}
+    // &.moving {position: absolute;}
 
     p {
         display      : block;

@@ -2,6 +2,7 @@
    'use strict';
 
     function handleDragStart (e) {
+        console.log(e);
         this.classList.add('moving');
 
         // sets dataObject as this el's innerHTML
@@ -12,7 +13,7 @@
     }
 
     function handleDragEnter(e) {
-        console.log('handleDragEnter');
+        // console.log('handleDragEnter');
         // this / e.target is the current hover target.
         // this.classList.add('over');
     }
@@ -29,7 +30,7 @@
     }
 
     function handleDragLeave(e) {
-        console.log('handleDragLeave');
+        // console.log('handleDragLeave');
         this.classList.remove('over');  // this / e.target is previous target element.
     }
 
@@ -57,7 +58,7 @@
             items.appendChild(dragSrcEl);
         }
 
-        if (this == dropzone) {
+        if (this == cart) {
             cart.appendChild(dragSrcEl);
         }
         // Set the source column's HTML to the HTML of the column we dropped on.
@@ -75,7 +76,12 @@
         // dragSrcEl.parentNode.removeChild(dragSrcEl);
 
         this.classList.remove('over');
-        console.log('handleDrop');
+        // console.log('handleDrop');
+        // console.log('screenX: ' + e.screenX);
+        console.log('offsetX: ' + e.offsetX);
+        // console.log('screenY: ' + e.screenY);
+        console.log('offsetY: ' + e.offsetY);
+        console.log('cart', cart.offsetHeight);
 
         return false;
     }
@@ -89,12 +95,11 @@
     }
 
     var dragSrcEl = null; // placeholder for html of dragged element
-    var cart = document.getElementById('cart');
 
-    var dropzone = document.querySelector('#dropzone');
-    dropzone.addEventListener('drop', handleDrop, false);
-    dropzone.addEventListener('dragenter', handleDragEnter, false);
-    dropzone.addEventListener('dragover', handleDragOver, false);
+    var cart = document.getElementById('cart');
+    cart.addEventListener('drop', handleDrop, false);
+    cart.addEventListener('dragenter', handleDragEnter, false);
+    cart.addEventListener('dragover', handleDragOver, false);
 
     var items = document.getElementById('items');
     items.addEventListener('drop', handleDrop, false);
